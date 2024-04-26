@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author Gustavo
  */
 public class SignUp extends javax.swing.JFrame {
-
+ 
     
     public SignUp() {
         initComponents();
@@ -23,6 +23,7 @@ public class SignUp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        //criação dos componentes botões labels etc.
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -39,6 +40,7 @@ public class SignUp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        // mudança de cor background e cor da fonte
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
@@ -46,6 +48,7 @@ public class SignUp extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setMinimumSize(new java.awt.Dimension(380, 570));
 
+        //imagens utilizadas na aplicação
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gustavo\\OneDrive\\Documentos\\NetBeansProjects\\LoginAndSignUp\\src\\Icon\\grandona (1) (1).png")); // NOI18N
         jLabel2.setText("jLabel2");
 
@@ -180,12 +183,15 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void SignUpbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpbtnActionPerformed
-        // TODO add your handling code here:
+        // conexão com o banco de dados
        
        String fullName,email,pwd,query;
        
        String SUrl,SUser,SPass;
-       SUrl = "jdbc:mysql://localhost:3307/mydb";
+       //constantes  facilitar manutenção
+       Final String host = "3307"; 
+       Final String dataBase = "mydb";
+       SUrl = "jdbc:mysql://localhost:'"+host+"'/'"+dataBase+"'";
        SUser = "root";
        SPass = "";
         
@@ -197,6 +203,7 @@ public class SignUp extends javax.swing.JFrame {
 
        if("".equals(fname.getText()))
        {
+           //invoca painel jframe , caso o usuário não coloque a resposta necessária
            JOptionPane.showMessageDialog(new JFrame(), "Nome completo é necessário", "Error", JOptionPane.ERROR_MESSAGE);
        }else if("".equals(emailAddress.getText()))
        {
@@ -208,7 +215,7 @@ public class SignUp extends javax.swing.JFrame {
            fullName = fname.getText();
            email = emailAddress.getText();
            pwd = password.getText();
-           
+           //inserção dos atributos do usuário no banco de dados
            query = "INSERT INTO login(email,pwd,fullname)" + "VALUES('"+email+"','"+pwd+"','"+fullName+"')";
            st.execute(query);
            fname.setText("");
@@ -217,7 +224,7 @@ public class SignUp extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null,"Conta criada com sucesso!");
            
        }
-       //banco de dados
+       
      
        }catch(Exception e) {System.out.println(e.getMessage());}
     }//GEN-LAST:event_SignUpbtnActionPerformed
@@ -228,7 +235,7 @@ public class SignUp extends javax.swing.JFrame {
       
                                              
 
-   
+   //Variáveis dos componentes JFrame
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SignUpbtn;
