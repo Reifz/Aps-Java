@@ -226,7 +226,7 @@ public class Login extends javax.swing.JFrame {
            query = "SELECT * FROM login WHERE email='"+p1.getEmail()+"'";
            ResultSet rs = st.executeQuery(query);
            while(rs.next()){passDB = rs.getString("pwd");notFound=1;}
-           
+           //nada//
            if(notFound == 1 &&  p1.getPwd().equals(passDB) )
            {JOptionPane.showMessageDialog(null,"Login realizado com sucesso!");
           
